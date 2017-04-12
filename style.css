@@ -1,0 +1,71 @@
+body {
+  font-family: Georgia;
+  font-size: 17px;
+  padding-top: 20px;
+  background-image: url('images/klimit-ladywithfan-repro-blur.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.header{
+    background-color: #F6D155;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding:10px;
+}
+
+.header h1
+{  
+    line-height: 200px;
+    margin:0;
+    display:inline;
+}
+
+.header ul
+{
+    display:inline;
+    margin: 0;
+    float: right;
+    vertical-align: center;
+}
+
+.header ul li
+{
+    display: inline;
+    list-style: none;
+}
+
+.personal-details{
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.intro{
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.container{
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.painting{
+    padding: 25px;
+    
+}
+
+.painting img{
+    padding: 2px;
+    border: solid #333 3px;
+    border-style: double;
+}
