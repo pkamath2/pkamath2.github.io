@@ -1,0 +1,73 @@
+body{
+    margin: 0;
+    font-family: 'PT Mono';
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #c8c0bb;
+    background: #33302e;
+}
+
+a{
+    text-decoration: none;
+    font-family: 'PT Mono';
+    font-size: 12px;
+    font-weight: 400;
+    color: #dba63c;
+    cursor: auto;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+#header{
+    width: 100%;
+    max-width: 1000px;
+    min-height: 133px;
+    margin: 0 auto;
+    background: #1e1c19;
+    color: #dba63c;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 20px;
+}
+
+#header ul li{
+    display:inline;
+    list-style: none;
+}
+
+#header #name{
+    padding-top: 50px;  
+    padding-left: 50px;   
+    font-family: "Pacifico", sans-serif;
+    font-size: 35px;
+    float: left;
+    width: 33%;
+}
+
+#header #menus{
+    padding-top:30px;
+    float: right;
+    width: 60%;
+}
+
+#header #menus #navigation{
+    float: left;
+    width: 30%;
+}
+
+#header #menus #socialmedia{
+    float: right;
+    width: 30%;
+
+}
+
+#header #menus #navigation ul li{
+    display:block;
+    list-style: none;
+}
+
+
