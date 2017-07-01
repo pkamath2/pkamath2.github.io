@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <style>
+            .circles-canvas{
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <svg class="circles-canvas" width="1700" height="1100"> //720,120
+        </svg>
+        <script>
+            var total_cirles = 600;
+            var x_arr = [];
+            var y_arr = [];
+            var r_arr = [];
+            var random_letters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+            for(i=0;i<total_cirles;i++){
+                x_arr[i] = Math.random();
+                y_arr[i] = Math.random();
+                r_arr[i] = Math.random();
+            }
+
+            var x_scaled = d3.scaleLinear().domain([0,d3.max(x_arr)]).range([50,1600]);
+            var y_scaled = d3.scaleLinear().domain([0,d3.max(y_arr)]).range([50,1000]);
+            var r_scaled = d3.scaleLinear().domain([0,d3.max(r_arr)]).range([5,50]);
+            var color_scaled = d3.scaleOrdinal(d3.schemeCategory10);
+
+            var svg = d3.select('svg');
+
+            for(i=0;i<total_cirles;i++){
+                svg.append('circle').attr('cx',Math.abs(x_scaled(x_arr[i])))
+                                .attr('cy',Math.abs(y_scaled(y_arr[i])))
+                                .attr('r',Math.abs(r_scaled(r_arr[i])))
+                                .attr('fill',color_scaled( random_letters[Math.floor(Math.random()*random_letters.length)] ))
+                                .attr('opacity', function(d){if(i%2==0)return 0.2;else return 0.8;});
+                                
+            }
+            
+        </script> 
+    </body>
+</html>
