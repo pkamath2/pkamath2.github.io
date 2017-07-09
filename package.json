@@ -1,0 +1,24 @@
+{
+  "name": "pkamath2.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "jquery-3.2.1.min.js",
+  "scripts": {
+    "start": "http-server -p 9000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pkamath2/pkamath2.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pkamath2/pkamath2.github.io/issues"
+  },
+  "homepage": "https://github.com/pkamath2/pkamath2.github.io#readme",
+  "dependencies": {
+    "http-server": "^0.10.0"
+  }
+}
