@@ -1,0 +1,139 @@
+<html>
+    <!--Inspired by Matt Pearson's Generative Art using Processing. That is one amazing book.-->
+    <head>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <style>
+            #svg{
+                border: solid black 1px;
+            }
+        </style>
+    </head>
+    <body>
+        <svg id="svg" width="700" height="300"></svg>
+        <script>
+            var svg = d3.select("svg");
+            var width = +svg.attr("width");
+            var height = +svg.attr("height");
+
+            var Cell = function (id,x,y,neighbours,state,prevState){
+                this.id = id;
+                this.x = x;
+                this.y = y;
+                this.neighbours = neighbours;
+                this.state = state;
+                this.prevState = false;
+            }
+
+            var cell_size = 10;
+            var num_columns = width/cell_size;
+            var num_rows = height/cell_size;
+            
+            var all_cells = new Array();
+            //Populate the grid
+            var idCounter = 0;
+            for(var i=0;i<num_rows;i++){
+                all_cells.push(new Array());
+                var new_y = i*cell_size + (cell_size/2);
+                for(var j=0;j<num_columns;j++){
+                    var new_x = j*cell_size + (cell_size/2);
+                    var stateBool = false;
+                    //Math.random() > 0.7?true:false;
+                    if(i == num_rows/2 && (j==(num_columns/2 -1) || j==num_columns/2 || j==(num_columns/2+1))) stateBool = true; //--- This is the starting state. Look at more wonderful starting states on WIKI
+                    (all_cells[i]).push(new Cell("id"+idCounter,new_x, new_y, new Array(),stateBool,stateBool)); 
+                    idCounter++;
+                }
+            }
+            console.log(all_cells)
+            
+            //Populate the neighbours
+            for(var i=0;i<num_rows;i++){
+                for(var j=0;j<num_columns;j++){
+                    
+                    x1=i-1;x2=i-1;x3=i-1;x4=i;x5=i;x6=i+1;x7=i+1;x8=i+1;
+                    y1=j-1;y2=j;y3=j+1;y4=j-1;y5=j+1;y6=j-1;y7=j;y8=j+1;
+
+                    //top row
+                    if(i==0) {
+                        x1=num_rows-1;x2=num_rows-1;x3=num_rows-1;
+                    }
+                    //bottom row
+                    if(i==num_rows-1){
+                        x6=0;x7=0;x8=0;
+                    }
+                    //leftmost column
+                    if(j==0) {
+                        y1=num_columns-1;y4=num_columns-1;y6=num_columns-1;
+                    }
+                    //rightmost column
+                    if(j==num_columns-1){
+                        y3=0;y5=0;y8=0;
+                    }
+
+                    all_cells[i][j].neighbours.push(all_cells[x1][y1]);
+                    all_cells[i][j].neighbours.push(all_cells[x2][y2]);
+                    all_cells[i][j].neighbours.push(all_cells[x3][y3]);
+                    all_cells[i][j].neighbours.push(all_cells[x4][y4]);
+                    all_cells[i][j].neighbours.push(all_cells[x5][y5]);
+                    all_cells[i][j].neighbours.push(all_cells[x6][y6]);
+                    all_cells[i][j].neighbours.push(all_cells[x7][y7]);
+                    all_cells[i][j].neighbours.push(all_cells[x8][y8]);
+                }
+            }
+
+            //Draw the grid
+            var g = svg.append("g");
+            for(var i=0;i<num_rows;i++){
+                for(var j=0;j<num_columns;j++){
+                    var cell = all_cells[i][j];
+                    g.append("circle").attr("id",cell.id)
+                                        .attr("cx",cell.x)
+                                        .attr("cy",cell.y)
+                                        .attr("r",cell_size/2)
+                                        .attr("fill","none")
+                                        .attr("stroke","black");
+
+                }
+
+            }
+           changeState();
+            function changeState(){
+                for(var i=0;i<num_rows;i++){
+                    for(var j=0;j<num_columns;j++){
+                        var cell = all_cells[i][j];
+                        var c = d3.selectAll("g").select("#"+cell.id);
+                        var fillVal = "none";
+                        if(cell.state) fillVal="black";
+                        c.attr("fill",fillVal);
+                        cell.prevState = cell.state;
+
+                    }
+                }
+            }
+
+            //Iterate through the grid and blink!!
+            var timer = d3.interval(function(){
+                for(var i=0;i<num_rows;i++){
+                    for(var j=0;j<num_columns;j++){
+                        var cell = all_cells[i][j];
+                        var neighbour_live_count = 0;
+                        for(var n=0;n<cell.neighbours.length;n++){
+                            if(cell.neighbours[n].prevState == true){
+                                neighbour_live_count++;
+                            }
+                        }
+                        if(cell.prevState == true){
+                            if(neighbour_live_count < 2) cell.state = false;
+                            if(neighbour_live_count > 3) cell.state = false;
+                            else cell.state = true;
+                        }else{
+                            if(neighbour_live_count == 3)cell.state = true;
+                            else cell.state = false;
+                        }
+                    }
+                }
+               changeState();
+            },1000);
+            
+        </script>
+    </body>
+</html>
