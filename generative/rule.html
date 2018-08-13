@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Elementary Cellular Automaton</title>
+        <style>
+            body{
+                font-family: 'American Typewriter', sans-serif
+            }
+            #ca-heading,#ca-dd, #ca-start-dd, #ca-button{
+                text-align: center;
+            }
+            #ca-button button{
+                padding: 10px 10px;
+            }
+            #ca-rule {
+                margin: auto;
+                width: 1000px;
+                height: 1000px;
+            }
+        </style>
+    </head>
+    <body onload="addrulesdd()">
+        <div id="ca-heading"><h1>Elementary Cellular Automata</h1></div>
+        <div id="ca-start-dd">Choose an initializer: 
+                <select id="ca-start-dd-sel">
+                    <option value="SBC">Single Black Cell</option>
+                    <option value="RBC">Randomly Strewn Black Cells</option>
+                </select>
+        </div>
+        <div>&nbsp;</div>
+        <div id="ca-dd">Choose a rule: 
+            <select id="ca-dd-sel">
+            </select>
+        </div>
+        <div>&nbsp;</div>
+        <div id="ca-button">
+            <button onclick="generate()" style="font-family: 'American Typewriter'; font-size: 15px;">Generate</button>
+        </div>
+        <div>&nbsp;</div>
+        <div id="ca-rule"></div>
+    </body>
+    <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script src="js/pts.min.js"></script>
+    <script src="js/rules.js"></script>
+</html>
