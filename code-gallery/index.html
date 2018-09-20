@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Mono">
+        <link rel="stylesheet" href="/style.css"/>
+
+        <script src="/jquery-3.2.1.min.js"></script>
+        <script>
+        function modalStuff(srcImgUrl,title){
+            var modal = document.getElementById('paintingModal');
+            
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            modal.style.display = "block";
+            
+            modalImg.src = srcImgUrl;
+            captionText.innerHTML = title; 
+        
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() { 
+                modal.style.display = "none";
+            }
+
+        }
+        </script>
+    </head>
+    <body>
+        <div id="paintingModal" class="modal">
+            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+            <img class="modal-content" id="img01"/>
+            <div id="caption"></div>
+        </div>
+        <div id="page-content">
+            <div id="header">
+                <div id="name">Purnima Kamath</div>
+                <div id="menus">
+                    <div id="navigation">
+                        <ul>
+                            <li><a href="/index.html">PAINTINGS</a></li>
+                            <li><a href="/code-gallery/">CODE</a></li>
+                        </ul>
+                    </div>
+                    <div id="socialmedia">
+                        <ul> 
+                            <li><a href="https://twitter.com/purnimakamath"/><img src="/images/Twitter_Logo_White_On_Blue.png" height="20px" width="20px"/></a></li>
+                            <li><a href="https://facebook.com/purnima.kamath"/><img src="/images/FB-f-Logo__blue_1024.png" height="20px" width="20px"/></a><li>
+                            <li><a href="https://www.linkedin.com/in/purnimakamath/"/><img src="/images/In-2C-128px-R.png" height="20px" width="22px"/></a></li>
+                            <li><a href="https://github.com/pkamath2"/><img src="/images/githubicon.png" height="20px" width="20px"/></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="content">
+                <div id="content-heading-no-border">
+                    <div id="content-heading-border">
+                        CODE GALLERY
+                    </div>
+                </div>
+                    <div class="content-no-columns">
+                        <div >
+                            <div>1. <a href="#2" onclick="window.open('https://bl.ocks.org/pkamath2/a1daf4f25ec4a7a14f65245e67261cfb','Cellular Automaton - Game of life')">Cellular Automaton - Game of Life</a></div>
+                            <div>2. <a href="/generative/rule.html">Elementary Cellular Automata - All 255 Wolfram rules</a></div>
+                            <div>3. <a href="/generative/fibonacci.html">Fibonacci Series - First 500 number</a></div>
+                            <div>4. <a href="#2" onclick="window.open('https://bl.ocks.org/pkamath2/','bl.ocks pkamath2')">Generative art - bl.ocks</a></div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </body>
+</html>
