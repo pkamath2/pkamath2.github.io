@@ -11,7 +11,7 @@ body{
 a{
     text-decoration: none;
     font-family: 'PT Mono';
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 400;
     color: #dba63c;
     cursor: auto;
@@ -106,6 +106,13 @@ img:hover {opacity: 0.7;}
 }
 .column-three{
     order:3;
+}
+
+.content-no-columns{
+    width: 100%;
+    padding-left:50px;
+    padding-top:50px;
+    padding-bottom:5px;
 }
 
 #content-paintings .painting{
