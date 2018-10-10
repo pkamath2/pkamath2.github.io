@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Mandelbrot Set</title>
+        <style>
+            body{
+                font-family: 'American Typewriter', sans-serif
+            }
+            #mbs-heading{
+                text-align: center;
+            }
+            #mbs {
+                margin: auto;
+                width: 1000px;
+                height: 1000px;
+            }
+        </style>
+        <script>
+
+                function transform(num, limit, tx_low, tx_high){
+                    var x = math.bignumber(num%limit);
+                    var y = math.bignumber((num-x)/limit);
+
+                    tx_low = math.bignumber(tx_low);
+                    tx_high = math.bignumber(tx_high);
+                    
+                    x = math.add(math.multiply(math.divide(math.subtract(x, 0),(math.subtract(limit, 0))), math.subtract(tx_high, tx_low)), tx_low);
+                    y = math.add(math.multiply(math.divide(math.subtract(y, 0),(math.subtract(limit, 0))), math.subtract(tx_high, tx_low)), tx_low);
+                    return [x,y];
+                }
+                function createSpace(rule_num, initializer){
+                    Pts.namespace(window);
+                    var space = new CanvasSpace("#mbs").setup({retina: true,bgcolor: 'floralwhite',resize:false});
+                    var form = space.getForm();
+                    var num_squares = 600;
+                    var cells = [];
+                    var cell_state = [];
+                    space.add({
+                        start: () => {
+                            cells = Create.gridPts(space.innerBound, num_squares, num_squares);
+                            for(i=0;i<num_squares*num_squares;i++){
+                                var a = math.complex(0, 0);
+                                var transformed_coord = transform(i, num_squares, -2.5, 2.25);//Convert to range -2, 2
+                                for(j=0;j<100;j++){
+                                    a = math.square(a);
+                                    a = math.add(a, math.complex(math.bignumber(transformed_coord[0]),math.bignumber(transformed_coord[1])));
+                                    cell_state[i] = '#4e5054';
+                                    if((math.re(a) == math.Infinity || math.im(a) == math.Infinity)){
+                                        if(j<=10) cell_state[i] = 'white';
+                                        if(j>10 && j<=20) cell_state[i] = 'pink';
+                                        if(j>20 && j<=50) cell_state[i] = 'blue';
+                                        break;
+                                    }
+                                }
+                            }
+                        },
+                        animate: (time, ftime) => {
+                            cells.forEach((c,i) => {
+                                form.strokeOnly("#123", 0.1).fill(cell_state[i]).square(c, 2); 
+                            });
+                        }
+                    });
+                    space.playOnce(0);
+                }
+            </script>
+    </head>
+    <body onload="createSpace()">
+        <div id="mbs-heading"><h1>Mandelbrot Set</h1></div>
+        <div>&nbsp;</div>
+        <div id="mbs"></div>
+    </body>
+    <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script src="../js/pts.min.js"></script>
+    <script src="https://unpkg.com/mathjs@5.2.0/dist/math.min.js"></script>
+        
+    
+</html>
