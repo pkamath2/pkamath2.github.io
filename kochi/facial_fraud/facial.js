@@ -98,7 +98,7 @@ function draw() {
     if(recordedString && recordedString != prevRecordedString) {
         console.log(recordedString);
         // socket.send(recordedString)
-        nlpPredictedEmotion = loadStrings("http://vast-woodland-82054.herokuapp.com/ff/analyse?start="+recordedString, checkEmotions)
+        nlpPredictedEmotion = loadStrings("https://vast-woodland-82054.herokuapp.com/ff/analyse?start="+recordedString, checkEmotions)
         prevRecordedString = recordedString;
     }
     text(recordedString, 350, height-30);
