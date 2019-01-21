@@ -1,6 +1,6 @@
 let height = 1000;
 let width = 700;
-let size = 20;
+let size = 10;
 let colors = ['black']
 let density = 0.02;
 
