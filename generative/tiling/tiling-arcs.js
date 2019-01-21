@@ -1,5 +1,5 @@
 let height = 1000;
-let width = 1000;
+let width = 700;
 let size = 10;
 let count = 1000;
 let colors = ['#ffd1d8', '#b4ecb4', "#80f4ff"]
@@ -9,8 +9,8 @@ let prev_orientation = -10;
 let tiles;
 
 function setup(){
-    canvas = createCanvas(height,width);
-    canvas.position(345,55);
+    canvas = createCanvas(width,height);
+    canvas.position(475,55);
     noLoop();
     selectedColor = random(colors);
     tiles = new Array();
