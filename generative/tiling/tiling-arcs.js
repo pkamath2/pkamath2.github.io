@@ -1,6 +1,6 @@
 let height = 1000;
 let width = 1000;
-let size = 20;
+let size = 10;
 let count = 1000;
 let colors = ['#ffd1d8', '#b4ecb4', "#80f4ff"]
 let sel_color = '#ffd1d8';
@@ -76,7 +76,6 @@ function tile(t){
     translate(size/2, size/2);
     rotate(t.orientation * PI/2);
     translate(-size/2, -size/2);
-    // background(sel_bg_color);
     stroke('black');
     fill(t.sel_color);
     arc(0, 0, size, size, 0, PI/2);
