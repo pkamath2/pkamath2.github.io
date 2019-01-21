@@ -55,7 +55,7 @@ function setup() {
   function draw() {
     
     noFill();
-    stroke('white');
+    stroke('pink');
     strokeWeight(1.5);
     translate(width/2, height/2);
     
