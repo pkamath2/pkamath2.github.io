@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <title>Julia Set</title>
+        <style>
+            body{
+                font-family: 'American Typewriter', sans-serif
+            }
+            #mbs-heading, #mbs-sub-heading{
+                text-align: center;
+            }
+            #mbs {
+                margin: auto;
+                text-align: center;
+            }
+        </style>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://unpkg.com/mathjs@5.2.0/dist/math.min.js"></script>
+    </head>
+    <body>
+        <div id="mbs-heading"><h1>Biomorph</h1></div>
+        <div id="mbs-sub-heading"><b>z -> z^5 + 0.5</b></div>
+        <div id="mbs"><canvas id="canvas" width=1080 height=850 style='border: solid black 5px'></canvas></div>
+        <script>
+            "use strict"
+
+            const canvas = d3.select("canvas");
+            const width = +canvas.attr('width');
+            const height = +canvas.attr('height');
+            const limit = 1000;
+            const ctx = canvas.node().getContext('2d');
+            const n = 3;
+
+            let x_bound = [-3.3, 3.3];
+            let y_bound = [-2.5, 2.5];
+
+            let x_scale = d3.scaleLinear()
+                            .domain([0, width])
+                            .range(x_bound);
+            
+            let y_scale = d3.scaleLinear()
+                            .domain([0, height])
+                            .range(y_bound);
+
+            let color_scale =  d3.scaleLinear()
+                                .domain([0, limit])
+                                .range([0, 1]);
+
+            canvas.on('mousedown', () => {
+                var coordinates = d3.mouse(canvas.node());
+
+                var x0 = x_scale(coordinates[0]);
+                var y0 = y_scale(coordinates[1]);
+                var boundary_width_x = (x_bound[1] - x_bound[0])*0.8;
+                var boundary_width_y = (y_bound[1] - y_bound[0])*0.8;
+
+                x_bound = [x0-boundary_width_x/2, x0+boundary_width_x/2];
+                y_bound = [y0-boundary_width_y/2, y0+boundary_width_y/2];
+
+                x_scale = d3.scaleLinear()
+                                .domain([0, width])
+                                .range(x_bound);
+            
+                y_scale = d3.scaleLinear()
+                                .domain([0, height])
+                                .range(y_bound);
+                d3.event.preventDefault();
+                draw();
+            })
+                 
+            function draw(){
+                let x = 0;
+                let y = 0;
+                let z = 0;
+                ctx.fillStyle = 'black';
+                ctx.fillRect(0,0, width, height);
+                for(var i=0;i<width;i++){
+                    x = x_scale(i);
+                    for(var j=0;j<height;j++){
+                        y = y_scale(j);
+                        z = {re:x, im:y};
+                        for(var k=0;k<limit;k++){
+                            let zre_temp = Math.pow(z.re*z.re + z.im*z.im, n/2)*Math.cos(n * Math.atan2(z.im, z.re)) + 0.5;
+                            let zim_temp = Math.pow(z.re*z.re + z.im*z.im, n/2)*Math.sin(n * Math.atan2(z.im, z.re));
+                            z = {re:zre_temp, im:zim_temp};
+                            if(Math.abs(z.re) > 10 || Math.abs(z.im) > 10 || zre_temp*zre_temp+zim_temp*zim_temp > 100){
+                                if(Math.abs(z.re) < 10 || Math.abs(z.im) < 10){
+                                    ctx.fillStyle = 'black';
+                                }else{
+                                    ctx.fillStyle = 'white';
+                                }
+                                ctx.fillRect(i, j, 1, 1);
+                                break;
+                            }
+                        }
+                        
+                        
+                    }
+                }
+            }
+            draw();
+            console.log('render complete')
+        </script>
+    </body>
+</html>
