@@ -13,6 +13,10 @@
                 margin: auto;
                 text-align: center;
             }
+            #mbs-2 ul{
+                display: inline-block;
+                list-style-type: none;
+            }
         </style>
         <script src="https://d3js.org/d3.v5.min.js"></script>
         <script src="https://unpkg.com/mathjs@5.2.0/dist/math.min.js"></script>
@@ -21,20 +25,22 @@
         <div id="mbs-heading"><h1>Infinite Fractals</h1></div><br/>
         <div id="mbs"> 
             Based Clifford Pickover's book - <a href="https://www.amazon.com/Computers-Pattern-Beauty-Clifford-Pickover/dp/0486417093">Computers, Patterns, Chaos & Beauty</a>
-            <ul>
-                <li><a href="mandelbrot.html">Mandelbrot Set: z -> z^2 + z</a></li>
-                <li><a href="julia-set-1.html">Julia Set - 1: z -> z^2 + (c = 0.285 + 0.01i)</a></li>
-                <li><a href="julia-set-2.html">Julia Set - 2: z -> z^2 + (c = -0.4 + 0.06i)</a></li>
-                <li><a href="julia-set-3.html">Julia Set - 3: z -> z^2 + (c = -0.8 + 0.156i)</a></li>
-                <li><a href="julia-set-4.html">Julia Set - 4: z -> z^7 + 0.626</a></li>
-                <li><a href="julia-set-biomorph-1.html">Julia Set - Biomorph - 1: z -> z^5 + 0.5</a></li>
-                <li><a href="julia-set-biomorph-2.html">Julia Set - Biomorph - 2: z -> sin(z) (sin(re)*cosh(im) + cos(im)*sinh(re).i)</a></li>
-                <li><a href="julia-set-biomorph-3.html">Julia Set - Biomorph - 3: z -> cos(z) (cos(re)*cosh(im) + sin(im)*sinh(re).i)</a></li>
-                <li><a href="julia-set-biomorph-3-1.html">Julia Set - Biomorph - 3 - 1: z -> cos(z) (cos(re)*cosh(im) + sin(im)*sinh(re).i)</a></li>
-                <li><a href="julia-set-biomorph-4.html">Julia Set - Biomorph - 4: z -> z^5 + 0.65</a></li>
-                <li><a href="julia-set-biomorph-5.html">Julia Set - Biomorph - 5: z -> z^5 + (c = 0.64 - 0.9i)</a></li>
-                <li><a href="julia-set-biomorph-6.html">Julia Set - Biomorph - 6: z -> z^9 + sin(z) (sin(re)*cosh(im) + cos(im)*sinh(re).i)</a></li>
-            </ul>
+            <div id="mbs-2">
+                <ul>
+                    <li><a href="mandelbrot.html">Mandelbrot Set: z -> z^2 + z</a></li>
+                    <li><a href="julia-set-1.html">Julia Set - 1: z -> z^2 + (c = 0.285 + 0.01i)</a></li>
+                    <li><a href="julia-set-2.html">Julia Set - 2: z -> z^2 + (c = -0.4 + 0.06i)</a></li>
+                    <li><a href="julia-set-3.html">Julia Set - 3: z -> z^2 + (c = -0.8 + 0.156i)</a></li>
+                    <li><a href="julia-set-4.html">Julia Set - 4: z -> z^7 + 0.626</a></li>
+                    <li><a href="julia-set-biomorph-1.html">Julia Set - Biomorph - 1: z -> z^5 + 0.5</a></li>
+                    <li><a href="julia-set-biomorph-2.html">Julia Set - Biomorph - 2: z -> sin(z) (sin(re)*cosh(im) + cos(im)*sinh(re).i)</a></li>
+                    <li><a href="julia-set-biomorph-3.html">Julia Set - Biomorph - 3: z -> cos(z) (cos(re)*cosh(im) + sin(im)*sinh(re).i)</a></li>
+                    <li><a href="julia-set-biomorph-3-1.html">Julia Set - Biomorph - 3 - 1: z -> cos(z) (cos(re)*cosh(im) + sin(im)*sinh(re).i)</a></li>
+                    <li><a href="julia-set-biomorph-4.html">Julia Set - Biomorph - 4: z -> z^5 + 0.65</a></li>
+                    <li><a href="julia-set-biomorph-5.html">Julia Set - Biomorph - 5: z -> z^5 + (c = 0.64 - 0.9i)</a></li>
+                    <li><a href="julia-set-biomorph-6.html">Julia Set - Biomorph - 6: z -> z^9 + sin(z) (sin(re)*cosh(im) + cos(im)*sinh(re).i)</a></li>
+                </ul>
+            </div>
         </div>
         
     </body>
