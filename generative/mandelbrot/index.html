@@ -10,8 +10,8 @@
             }
             #mbs {
                 margin: auto;
-                width: 1000px;
-                height: 1000px;
+                width: 2000px;
+                height: 2000px;
             }
         </style>
         <script>
@@ -31,7 +31,7 @@
                     Pts.namespace(window);
                     var space = new CanvasSpace("#mbs").setup({retina: true,bgcolor: 'floralwhite',resize:false});
                     var form = space.getForm();
-                    var num_squares = 600;
+                    var num_squares = 2000;
                     var cells = [];
                     var cell_state = [];
                     space.add({
@@ -39,8 +39,8 @@
                             cells = Create.gridPts(space.innerBound, num_squares, num_squares);
                             for(i=0;i<num_squares*num_squares;i++){
                                 var a = math.complex(0, 0);
-                                var transformed_coord = transform(i, num_squares, -2.5, 2.25);//Convert to range -2, 2
-                                for(j=0;j<100;j++){
+                                var transformed_coord = transform(i, num_squares, -2, 2);//Convert to range -2, 2
+                                for(j=0;j<50;j++){
                                     a = math.square(a);
                                     a = math.add(a, math.complex(math.bignumber(transformed_coord[0]),math.bignumber(transformed_coord[1])));
                                     cell_state[i] = '#4e5054';
@@ -55,7 +55,7 @@
                         },
                         animate: (time, ftime) => {
                             cells.forEach((c,i) => {
-                                form.strokeOnly("#123", 0.1).fill(cell_state[i]).square(c, 2); 
+                                form.strokeOnly("#123", 0.001).fill(cell_state[i]).square(c, 1); 
                             });
                         }
                     });
@@ -65,7 +65,7 @@
     </head>
     <body onload="createSpace()">
         <div id="mbs-heading"><h1>Mandelbrot Set</h1></div>
-        <div id="mbs-heading"><h3>(Needs bucket loads of patience - browser takes a little time to compute 360K complex numbers, 100 times iteratively.)</h3></div>
+        <div id="mbs-heading"><h3>(Needs bucket loads of patience - browser takes a little time to compute 360K complex numbers, 100 times iteratively. )</h3></div>
         <div>&nbsp;</div>
         <div id="mbs"></div>
     </body>

@@ -29,10 +29,6 @@
             var width = +svg.attr("width");
             var height = +svg.attr("height");
 
-            var xstart = Math.random()*10;
-            var xnoise = xstart;
-            var ynoise = Math.random()*10;
-
             var strokecolor = Number(parseInt(0,10)).toString(16);
             strokecolor = "#"+strokecolor+strokecolor+strokecolor;
 
@@ -52,11 +48,6 @@
                 }
             }
             
-            function generateNoise2(x,y){
-                var noise = Math.pow(Math.sin((x+y)/2),3)
-                return Math.abs(noise);
-            } 
-
             function generateNoise3(x, y){
                 return perlinNoiseArr[Math.floor((y*width)+x)];
             }            

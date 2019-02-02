@@ -44,27 +44,29 @@
                                 .domain([0, limit])
                                 .range([0, 1]);
 
-            canvas.on('mousedown', () => {
-                var coordinates = d3.mouse(canvas.node());
+            canvas.on('mousedown', () => { 
+                if(!d3.event.ctrlKey){ //If control is pressed, probably we just need to save the image and zoom!
+                    var coordinates = d3.mouse(canvas.node());
 
-                var x0 = x_scale(coordinates[0]);
-                var y0 = y_scale(coordinates[1]);
-                var boundary_width_x = (x_bound[1] - x_bound[0])*0.8;
-                var boundary_width_y = (y_bound[1] - y_bound[0])*0.8;
+                    var x0 = x_scale(coordinates[0]);
+                    var y0 = y_scale(coordinates[1]);
+                    var boundary_width_x = (x_bound[1] - x_bound[0])*0.8;
+                    var boundary_width_y = (y_bound[1] - y_bound[0])*0.8;
 
-                x_bound = [x0-boundary_width_x/2, x0+boundary_width_x/2];
-                y_bound = [y0-boundary_width_y/2, y0+boundary_width_y/2];
+                    x_bound = [x0-boundary_width_x/2, x0+boundary_width_x/2];
+                    y_bound = [y0-boundary_width_y/2, y0+boundary_width_y/2];
 
-                x_scale = d3.scaleLinear()
-                                .domain([0, width])
-                                .range(x_bound);
-            
-                y_scale = d3.scaleLinear()
-                                .domain([0, height])
-                                .range(y_bound);
-                d3.event.preventDefault();
-                draw();
-            })
+                    x_scale = d3.scaleLinear()
+                                    .domain([0, width])
+                                    .range(x_bound);
+                
+                    y_scale = d3.scaleLinear()
+                                    .domain([0, height])
+                                    .range(y_bound);
+                    d3.event.preventDefault();
+                    draw();
+                }
+            });
                  
             function draw(){
                 let x = 0;
