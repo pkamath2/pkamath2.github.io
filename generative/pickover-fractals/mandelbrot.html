@@ -43,7 +43,7 @@
                                 .range([0, 1]);
 
             canvas.on('mousedown', () => { 
-                if(!d3.event.ctrlKey){ //If control is pressed, probably we just need to save the image and zoom!
+                if(!d3.event.ctrlKey){ //If control is pressed, probably we just need to save the image and not zoom!
                     var coordinates = d3.mouse(canvas.node());
 
                     var x0 = x_scale(coordinates[0]);
