@@ -7,12 +7,21 @@ var count = 0;
 var angleChange = 0;
 var increment = 0;
 
+function initialize(){
+  clear();
+  index = 0;
+  angle = 0;
+  count = 0;
+  background('#191314');
+  // background('floralwhite');
+}
+
 function setup() {
     fibo = createSeries(600);
     canvas = createCanvas(1000, 900);
     canvas.position(345,55);
-    background('black');
-    frameRate(150);
+    initialize();
+    frameRate(2000);
 
     // Original values from Shiffmann's blog - Did not produce cool results with my code. 
     // Better looking values below. 
@@ -55,12 +64,12 @@ function setup() {
   function draw() {
     
     noFill();
+    // stroke('#7a3f72');
     stroke('pink');
-    strokeWeight(1.5);
+    strokeWeight(2);
     translate(width/2, height/2);
     
     var r = Math.sqrt(count)
-    //r = count;
     var x = r * sin(angle);
     var y = r * cos(angle);
     
@@ -70,7 +79,7 @@ function setup() {
 
     index++;
     if(index == fibo.length){
-        noLoop();
+        window.setTimeout(()=>initialize(), 3000);
     }
   }
 

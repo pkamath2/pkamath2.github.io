@@ -1,7 +1,7 @@
 <html>
     <!--Inspired by Matt Pearson's Generative Art using Processing. That is one amazing book.-->
     <head>
-        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
         <script src="https://unpkg.com/perlin-noise@0.0.1/index.js"></script>
         <style>
             body{
@@ -22,35 +22,56 @@
     <body>
         <div id="n-heading"><h1>Perlin Noise</h1></div>
         <div id="n-content">
-            <svg id="svg" width="700" height="1000"></svg>
+            <svg id="svg" width="700" height="700"></svg>
         </div>
         <script>
             var svg = d3.select("svg");
             var width = +svg.attr("width");
             var height = +svg.attr("height");
-
-            var strokecolor = Number(parseInt(0,10)).toString(16);
-            strokecolor = "#"+strokecolor+strokecolor+strokecolor;
+            var color = '#89cff0';
 
             var perlinNoiseArr = generatePerlinNoise(width, height,{octaveCount:6,amplitude:0.03,persistence:0.02});
-            for(var y=0;y<height;y+=5){
-                for(var x=0;x<width;x+=5){
-                    var dimension = generateNoise3(x,y);
-                    console.log(dimension)
-                    var fill = dimension>0.5?'#ffd1d8':'none';
-                    svg.append("rect").attr("x",x)
-                                        .attr("y",y)
-                                        .attr("width",dimension*7)
-                                        .attr("height",dimension*7)
-                                        .attr("fill",fill)
-                                        .attr("stroke",strokecolor)
-                                        .attr('stroke-width', 0.2);
+            var incrementArr = new Array(perlinNoiseArr.length);
+            var colorArr = new Array(perlinNoiseArr.length);
+            function drawGrid(){
+                    for(var y=0;y<height;y+=20){
+                    for(var x=0;x<width;x+=20){
+                        var index = (y*width)+x;
+                        var value = perlinNoiseArr[Math.floor(index)];
+                        
+                        if(value>0.9) {
+                            incrementArr[index] = -0.01;
+                        }else if(value<0.9 && value>0.01) {
+                            incrementArr[index] = incrementArr[index]? incrementArr[index]:(Math.random()>0.5?0.01:-0.01);
+                        }else if(value<0.01) {
+                            incrementArr[index] = 0.01;
+                            colorArr[index] = Math.random()>0.5?'#89cff0':'pink';
+                        }
+
+                        var r = value + incrementArr[index]
+                        perlinNoiseArr[index] = r;
+                        var rect = d3.select("rect[id='"+index+"']");
+                        if(rect._groups[0][0] == null) {
+                            rect = svg.append("rect");//No D3 element exists
+                            colorArr[index] = Math.random()>0.5?'#89cff0':'pink';
+                        }
+                        rect.attr("id", index)
+                                            .attr("x",x)
+                                            .attr("y",y)
+                                            .attr("width",r*25)
+                                            .attr("height",r*25)
+                                            .attr("fill",colorArr[index])
+                                            .attr("stroke",'black')
+                                            .attr('stroke-width', 0.1);
+                    }
                 }
             }
+
+            drawGrid();
+            var timer = d3.interval(function(){
+                drawGrid();
+            },10);
             
-            function generateNoise3(x, y){
-                return perlinNoiseArr[Math.floor((y*width)+x)];
-            }            
         </script>
     </body>
 </html>

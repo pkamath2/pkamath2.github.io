@@ -9,7 +9,7 @@ function setup(){
     //canvas.position(475,55);
     canvas.position(0,55);
     noLoop();
-    background('gray')
+    background('pink')
 }
 
 
