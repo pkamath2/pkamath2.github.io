@@ -1,0 +1,111 @@
+<html>
+
+<head>
+    <title>3D Strange Attractors</title>
+    <style>
+        body {
+            font-family: 'American Typewriter', sans-serif
+        }
+
+        #mbs-heading {
+            text-align: center;
+        }
+
+        #mbs {
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+
+<body>
+    <div id="mbs-heading">
+        <h1>Pickover's 3D Strange Attractors</h1>
+    </div>
+    <div id="mbs"><canvas id="canvas" width=1000 height=800 style='border: solid black 5px'></canvas></div>
+    <script>
+        "use strict"
+
+        const canvas = d3.select("canvas");
+        const width = +canvas.attr('width');
+        const height = +canvas.attr('height');
+        const ctx = canvas.node().getContext('2d');
+        const iter1 =1000;
+        const iter2 = 1000;
+
+        //Original Pickovers
+        const a = 2.24;
+        const b = 0.43;
+        const c = -0.65;
+        const d = -2.43;
+        const e = 1;
+
+        //My mods - 1
+        // const a = 2.78;
+        // const b = 0.65;
+        // const c = -0.96;
+        // const d = -2.65;
+        // const e = 0.8;
+
+        //My mods - 2
+        // const a = 2.18;
+        // const b = 0.65;
+        // const c = -0.66;
+        // const d = -2.15;
+        // const e = 1;
+
+        //My mods - 3
+        // const a = 1.78;
+        // const b = 0.65;
+        // const c = -0.96;
+        // const d = -2.65;
+        // const e = 0.8;
+
+        let x_bound = [-2, 2];
+        let y_bound = [-2, 2];
+
+        let x_scale = d3.scaleLinear()
+            .domain([x_bound[0], x_bound[1]])
+            .range([0, width]);
+
+        let y_scale = d3.scaleLinear()
+            .domain([y_bound[0], y_bound[1]])
+            .range([0, height]);
+
+
+        function draw() {
+
+            let x = 0;
+            let y = 0;
+            let z = 0;
+            var xx = 0;
+            var yy = 0;
+            var zz = 0;
+            ctx.fillStyle = 'floralwhite';
+            ctx.fillRect(0, 0, width, height);
+            for (var j = 0; j < iter1; j++) {
+                for (var i = 0; i < iter2; i++) {
+                    xx = Math.sin(a * y) - x * Math.cos(b * x);
+                    yy = z * Math.sin(c * x) - Math.cos(d * y);
+                    zz = e * Math.sin(x);
+                    x = xx;
+                    y = yy;
+                    z = zz;
+                    if (xx < x_bound[1] && xx > x_bound[0] && yy < y_bound[1] && yy > y_bound[0]) {
+                        // ctx.lineWidth = 0.5;
+                        // ctx.strokeStyle = 'rgb(80,156,156)';
+                        ctx.fillStyle = 'rgb(80,156,156)';
+                        // ctx.strokeRect(x_scale(xx), y_scale(yy), 4, 4);
+                        ctx.fillRect(x_scale(xx), y_scale(yy), 1, 1);
+                    }
+
+                }
+            }
+        }
+        draw();
+        console.log('render complete')
+    </script>
+</body>
+
+</html>
