@@ -2,6 +2,8 @@
 
 <head>
     <title>3D Strange Attractors</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+        integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <style>
         body {
             font-family: 'American Typewriter', sans-serif
@@ -12,8 +14,12 @@
         }
 
         #mbs {
-            margin: auto;
-            text-align: center;
+            display: grid;
+            grid-template-columns: 10% 70% 20%;
+        }
+
+        .ranges {
+            padding-top: 20px;
         }
     </style>
     <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -23,7 +29,35 @@
     <div id="mbs-heading">
         <h1>Pickover's 3D Strange Attractors</h1>
     </div>
-    <div id="mbs"><canvas id="canvas" width=1000 height=800 style='border: solid black 5px'></canvas></div>
+    <div id="mbs">
+        <div></div><canvas id="canvas" width=1000 height=800 style='border: solid black 5px'></canvas>
+        <div>
+            <div class="ranges">&nbsp;
+            </div>
+            <div class="ranges">
+                <input type="range" id="a" name="a" min="-5" max="5" step="0.01" onchange="updatelabels()" />
+                <label for="a" id="for-a">a</label>
+            </div>
+            <div class="ranges">
+                <input type="range" id="b" name="b" min="-5" max="5" step="0.01" onchange="updatelabels()" />
+                <label for="b" id="for-b">b</label>
+            </div>
+            <div class="ranges">
+                <input type="range" id="c" name="c" min="-5" max="5" step="0.01" onchange="updatelabels()" />
+                <label for="c" id="for-c">c</label>
+            </div>
+            <div class="ranges">
+                <input type="range" id="d" name="d" min="-5" max="5" step="0.01" onchange="updatelabels()" />
+                <label for="d" id="for-d">d</label>
+            </div>
+
+            <button id="generate" type="button" class="btn btn-dark" onclick="redraw()">Generate</button>
+            <button id="reset" type="button" class="btn btn-dark" onclick="reset()">Reset</button>
+
+        </div>
+
+    </div>
+
     <script>
         "use strict"
 
@@ -31,7 +65,7 @@
         const width = +canvas.attr('width');
         const height = +canvas.attr('height');
         const ctx = canvas.node().getContext('2d');
-        const iter1 =1000;
+        const iter1 = 1000;
         const iter2 = 1000;
 
         //Original Pickovers
@@ -73,21 +107,20 @@
             .domain([y_bound[0], y_bound[1]])
             .range([0, height]);
 
-
-        function draw() {
-
+        function draw(new_a, new_b, new_c, new_d, redraw) {
             let x = 0;
             let y = 0;
             let z = 0;
             var xx = 0;
             var yy = 0;
             var zz = 0;
+
             ctx.fillStyle = 'floralwhite';
             ctx.fillRect(0, 0, width, height);
             for (var j = 0; j < iter1; j++) {
                 for (var i = 0; i < iter2; i++) {
-                    xx = Math.sin(a * y) - x * Math.cos(b * x);
-                    yy = z * Math.sin(c * x) - Math.cos(d * y);
+                    xx = Math.sin(new_a * y) - x * Math.cos(new_b * x);
+                    yy = z * Math.sin(new_c * x) - Math.cos(new_d * y);
                     zz = e * Math.sin(x);
                     x = xx;
                     y = yy;
@@ -103,7 +136,38 @@
                 }
             }
         }
-        draw();
+        reset();
+        draw(a, b, c, d);
+
+        function redraw() {
+            var new_a = document.getElementById('a').value;
+            var new_b = document.getElementById('b').value;
+            var new_c = document.getElementById('c').value;
+            var new_d = document.getElementById('d').value;
+
+            draw(new_a, new_b, new_c, new_d, false)
+            console.log('redraw ' + new_a)
+        }
+
+        function updatelabels() {
+            document.getElementById('for-a').innerText = 'a = ' + document.getElementById('a').value;
+            document.getElementById('for-b').innerText = 'b = ' + document.getElementById('b').value;
+            document.getElementById('for-c').innerText = 'c = ' + document.getElementById('c').value;
+            document.getElementById('for-d').innerText = 'd = ' + document.getElementById('d').value;
+        }
+
+        function reset() {
+            document.getElementById('a').value = a;
+            document.getElementById('for-a').innerText = 'a = ' + a;
+            document.getElementById('b').value = b;
+            document.getElementById('for-b').innerText = 'b = ' + b;
+            document.getElementById('c').value = c;
+            document.getElementById('for-c').innerText = 'c = ' + c;
+            document.getElementById('d').value = d;
+            document.getElementById('for-d').innerText = 'd = ' + d;
+
+            draw(a, b, c, d);
+        }
         console.log('render complete')
     </script>
 </body>
