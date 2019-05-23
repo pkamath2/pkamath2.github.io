@@ -4,11 +4,11 @@ var index = 0;
 var angle = 0;
 var count = 0;
 
-var angleChange =  Math.PI + Math.PI/1000
+var angleChange =  0.418879
 var increment = 200;
 
 function draw() {
-  fibo = createSeries(300);
+  fibo = createSeries(150);
 
   var svg = d3.select("#fibo");
   svg.attr("transform", "translate(400, 0)")
