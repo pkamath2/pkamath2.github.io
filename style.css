@@ -24,7 +24,7 @@ img:hover {opacity: 0.7;}
 
 #page-content{
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -117,11 +117,12 @@ img:hover {opacity: 0.7;}
 
 #content-paintings .painting{
      margin-bottom:20%;
+     text-align: center;
 }
 
 #content-paintings img{
   width: auto;
-  max-width: 300;
+  max-width: 400;
   height: auto;
   max-height: 392;
    border: solid #1e1c19 4px;

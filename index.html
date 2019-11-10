@@ -1,125 +1,169 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Mono">
-        <link rel="stylesheet" href="style.css"/>
 
-        <script src="jquery-3.2.1.min.js"></script>
-        <script>
-        function modalStuff(srcImgUrl,title){
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Mono">
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+        function modalStuff(srcImgUrl, title) {
             var modal = document.getElementById('paintingModal');
-            
+
             var modalImg = document.getElementById("img01");
             var captionText = document.getElementById("caption");
             modal.style.display = "block";
-            
+
             modalImg.src = srcImgUrl;
-            captionText.innerHTML = title; 
-        
+            captionText.innerHTML = title;
+
             // Get the <span> element that closes the modal
             var span = document.getElementsByClassName("close")[0];
 
             // When the user clicks on <span> (x), close the modal
-            span.onclick = function() { 
+            span.onclick = function () {
                 modal.style.display = "none";
             }
 
         }
-        </script>
-    </head>
-    <body>
-        <div id="paintingModal" class="modal">
-            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
-            <img class="modal-content" id="img01"/>
-            <div id="caption"></div>
-        </div>
-        <div id="page-content">
-            <div id="header">
-                <div id="name">Purnima Kamath</div>
-                <div id="menus">
-                    <div id="navigation">
-                        <ul>
-                            <li><a href="/index.html">PAINTINGS</a></li>
-                            <li><a href="/code-gallery/">CODE</a></li>
-                        </ul>
-                    </div>
-                    <div id="socialmedia">
-                        <ul> 
-                            <li><a href=# onclick="window.open('https://twitter.com/purnimakamath')"/><img src="images/Twitter_Logo_White_On_Blue.png" height="20px" width="20px"/></a></li>
-                            <li><a href=# onclick="window.open('https://facebook.com/purnima.kamath')"/><img src="images/FB-f-Logo__blue_1024.png" height="20px" width="20px"/></a><li>
-                            <li><a href=# onclick="window.open('https://www.linkedin.com/in/purnimakamath/')"/><img src="images/In-2C-128px-R.png" height="20px" width="22px"/></a></li>
-                            <li><a href=# onclick="window.open('https://github.com/pkamath2')"/><img src="images/githubicon.png" height="20px" width="20px"/></a></li>
-                        </ul>
-                    </div>
+    </script>
+</head>
+
+<body>
+    <div id="paintingModal" class="modal">
+        <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+        <img class="modal-content" id="img01" />
+        <div id="caption"></div>
+    </div>
+    <div id="page-content">
+        <div id="header">
+            <div id="name">Purnima Kamath</div>
+            <div id="menus">
+                <div id="navigation">
+                    <ul>
+                        <li><a href="/index.html">PAINTINGS</a></li>
+                        <li><a href="/code-gallery/">CODE</a></li>
+                    </ul>
                 </div>
-            </div>
-            <div id="content">
-                <div id="content-heading-no-border">
-                    <div id="content-heading-border">
-                        PAINTINGS GALLERY
-                    </div>
-                </div>
-                <div id="content-paintings">
-                    <div class="column column-one">
-                        <div class="painting">
-                            <div class="painting-image"><a href="#13" onclick="javascript:modalStuff('images/Kasunga-shrine-2.png','Kasunga Shrine Japan')"><img src="images/Kasunga-shrine-2.png"/></a></div>
-                            <div class="painting-title">Lanterns at Kasuga Shrine in Nara Japan</div>
-                            <div class="painting-blurb"> These laterns are a unique feature of the shrine located at Nara.</div>
-                        </div>
-                        <div class="painting">
-                            <div class="painting-image"><a href="#1" onclick="javascript:modalStuff('images/ballet-dancer.jpg','Ballet Dancer')"><img src="images/ballet-dancer.jpg"/></a></div>
-                            <div class="painting-title">Ballet Dancer</div>
-                            <div class="painting-blurb">My first painting attempt at ballet dancers. It was difficult getting the stretch of the neck and the hands right.</div>
-                        </div>
-                        <div class="painting">
-                            <div class="painting-image"><a href="#2" onclick="javascript:modalStuff('images/steve-mccurry-rajasthan.jpg','Women in Rajasthan - Steve McCurry reproduction')"><img src="images/steve-mccurry-rajasthan.jpg"/></a></div>
-                            <div class="painting-title">Women in Rajasthan - Steve McCurry reproduction</div>
-                            <div class="painting-blurb">I loved the color of the women's dresses against the vanilla backdrop in his photographs. So inspired that I wanted to paint it!</div>
-                        </div>
-                        <div class="painting">
-                            <div class="painting-image"><a href="#3" onclick="javascript:modalStuff('images/monet-boats-repro.jpg','Monet Boats - Reproduction')"><img src="images/monet-boats-repro.jpg"/></a></div>
-                            <div class="painting-title">Monet Boats - Reproduction</div>
-                            <div class="painting-blurb">My first with the My Art Space group. They are an amazing set of artists.</div>
-                        </div>
-                        
-                    </div>
-                    <div class="column column-two">
-                        <div class="painting">
-                            <div class="painting-image"><a href="#5" onclick="javascript:modalStuff('images/klimit-ladywithfan-repro.jpg','Lady with a fan - Klimt Reproduction')"><img id="klimt" src="images/klimit-ladywithfan-repro.jpg"/></a></div>
-                            <div class="painting-title">Lady with a fan - Klimt Reproduction</div>
-                            <div class="painting-blurb">I have always been mesemerized by Klimts painting's. I can stare at the Japanese motifs and intricate designs for hours at length.</div>
-                        </div>
-                        <div class="painting">
-                            <div class="painting-image"><a href="#15" onclick="javascript:modalStuff('images/flowers.jpg','Sunflowers')"><img src="images/flowers.jpg"/></a></div>
-                            <div class="painting-title">Sunflowers</div>
-                            <div class="painting-blurb">My take on Van Gogh's Sunflowers</div>
-                        </div>
-                        <div class="painting">
-                            <div class="painting-image"><a href="#4" onclick="javascript:modalStuff('images/still-life-1.jpg','Still Life')"><img src="images/still-life-1.jpg"/></a></div>
-                            <div class="painting-title">Still Life</div>
-                            <div class="painting-blurb">Wine &amp; Cheese! The most difficult part was to get the reflections on the glass right.</div>
-                        </div>
-                    </div>
-                    <div class="column column-three">
-                        <div class="painting">
-                            <div class="painting-image"><a href="#14" onclick="javascript:modalStuff('images/girl.jpg','Girl in a bus')"><img src="images/girl.jpg"/></a></div>
-                            <div class="painting-title">Girl in a bus</div>
-                            <div class="painting-blurb">This is a painting reproduction of Steve McCurry's original photograph during his trip to Bangladesh</div>
-                        </div>
-                        <div class="painting">
-                            <div class="painting-image"><a href="#9" onclick="javascript:modalStuff('images/bayon.jpg','Bayon Cambodia')"><img src="images/bayon.jpg"/></a></div>
-                            <div class="painting-title">Bayon Cambodia</div>
-                            <div class="painting-blurb">The majestic Bayon temples were built by Kings for themselves, so that their subjects could workship them long after they are gone.
-                            </div>
-                        </div>
-                        <div class="painting">
-                            <div class="painting-image"><a href="#10" onclick="javascript:modalStuff('images/humming-bird.jpg','Hummingbird')"><img src="images/humming-bird.jpg"/></a></div>
-                            <div class="painting-title">Hummingbird</div>
-                            <div class="painting-blurb">Its such a tiny little bird, but so much energy. I have tried to capture the different colors reflecting off its feathers.</div>
-                        </div>
-                    </div>
+                <div id="socialmedia">
+                    <ul>
+                        <li><a href=# onclick="window.open('https://twitter.com/purnimakamath')" /><img
+                                src="images/Twitter_Logo_White_On_Blue.png" height="20px" width="20px" /></a></li>
+                        <li><a href=# onclick="window.open('https://facebook.com/purnima.kamath')" /><img
+                                src="images/FB-f-Logo__blue_1024.png" height="20px" width="20px" /></a>
+                        <li>
+                        <li><a href=# onclick="window.open('https://www.linkedin.com/in/purnimakamath/')" /><img
+                                src="images/In-2C-128px-R.png" height="20px" width="22px" /></a></li>
+                        <li><a href=# onclick="window.open('https://github.com/pkamath2')" /><img
+                                src="images/githubicon.png" height="20px" width="20px" /></a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </body>
+        <div id="content">
+            <div id="content-heading-no-border">
+                <div id="content-heading-border">
+                    PAINTINGS GALLERY
+                </div>
+            </div>
+            <div id="content-paintings">
+                <div class="column column-one">
+                    <div class="painting">
+                        <div class="painting-image"><a href="#13"
+                                onclick="javascript:modalStuff('images/Kasunga-shrine-2.png','Kasunga Shrine Japan')"><img
+                                    src="images/Kasunga-shrine-2.png" /></a></div>
+                        <div class="painting-title">Lanterns at Kasuga Shrine in Nara Japan</div>
+                        <div class="painting-blurb"> These laterns are a unique feature of the shrine located at Nara.
+                        </div>
+                    </div>
+                    <div class="painting">
+                        <div class="painting-image"><a href="#1"
+                                onclick="javascript:modalStuff('images/ballet-dancer.jpg','Ballet Dancer')"><img
+                                    src="images/ballet-dancer.jpg" /></a></div>
+                        <div class="painting-title">Ballet Dancer</div>
+                        <div class="painting-blurb">My first painting attempt at ballet dancers. It was difficult
+                            getting the stretch of the neck and the hands right.</div>
+                    </div>
+                    <div class="painting">
+                        <div class="painting-image"><a href="#2"
+                                onclick="javascript:modalStuff('images/steve-mccurry-rajasthan.jpg','Women in Rajasthan - Steve McCurry reproduction')"><img
+                                    src="images/steve-mccurry-rajasthan.jpg" /></a></div>
+                        <div class="painting-title">Women in Rajasthan - Steve McCurry reproduction</div>
+                        <div class="painting-blurb">I loved the color of the women's dresses against the vanilla
+                            backdrop in his photographs. So inspired that I wanted to paint it!</div>
+                    </div>
+                    <div class="painting">
+                        <div class="painting-image"><a href="#3"
+                                onclick="javascript:modalStuff('images/monet-boats-repro.jpg','Monet Boats - Reproduction')"><img
+                                    src="images/monet-boats-repro.jpg" /></a></div>
+                        <div class="painting-title">Monet Boats - Reproduction</div>
+                        <div class="painting-blurb">My first with the My Art Space group. They are an amazing set of
+                            artists.</div>
+                    </div>
+
+                </div>
+                <div class="column column-two">
+                    <div class="painting">
+                        <div class="painting-image"><a href="#5"
+                                onclick="javascript:modalStuff('images/klimit-ladywithfan-repro.jpg','Lady with a fan - Klimt Reproduction')"><img
+                                    id="klimt" src="images/klimit-ladywithfan-repro.jpg" /></a></div>
+                        <div class="painting-title">Lady with a fan - Klimt Reproduction</div>
+                        <div class="painting-blurb">I have always been mesemerized by Klimts painting's. I can stare at
+                            the Japanese motifs and intricate designs for hours at length.</div>
+                    </div>
+                    <div class="painting">
+                        <div class="painting-image"><a href="#100"
+                                onclick="javascript:modalStuff('images/rome_statue1.png','Status in Rome')"><img
+                                    id="rome" src="images/rome_statue1.png" /></a></div>
+                        <div class="painting-title">Statue in Rome</div>
+                        <div class="painting-blurb">My trial at painting a statue. Trying to use a single color to generate various tones and shadows.</div>
+                    </div>
+                    <div class="painting">
+                        <div class="painting-image"><a href="#15"
+                                onclick="javascript:modalStuff('images/flowers.jpg','Sunflowers')"><img
+                                    src="images/flowers.jpg" /></a></div>
+                        <div class="painting-title">Sunflowers</div>
+                        <div class="painting-blurb">My take on Van Gogh's Sunflowers</div>
+                    </div>
+                    <div class="painting">
+                        <div class="painting-image"><a href="#4"
+                                onclick="javascript:modalStuff('images/still-life-1.jpg','Still Life')"><img
+                                    src="images/still-life-1.jpg" /></a></div>
+                        <div class="painting-title">Still Life</div>
+                        <div class="painting-blurb">Wine &amp; Cheese! The most difficult part was to get the
+                            reflections on the glass right.</div>
+                    </div>
+                </div>
+                <div class="column column-three">
+                    <div class="painting">
+                        <div class="painting-image"><a href="#14"
+                                onclick="javascript:modalStuff('images/girl.jpg','Girl in a bus')"><img
+                                    src="images/girl.jpg" /></a></div>
+                        <div class="painting-title">Girl in a bus</div>
+                        <div class="painting-blurb">This is a painting reproduction of Steve McCurry's original
+                            photograph during his trip to Bangladesh</div>
+                    </div>
+                    <div class="painting">
+                        <div class="painting-image"><a href="#9"
+                                onclick="javascript:modalStuff('images/bayon.jpg','Bayon Cambodia')"><img
+                                    src="images/bayon.jpg" /></a></div>
+                        <div class="painting-title">Bayon Cambodia</div>
+                        <div class="painting-blurb">The majestic Bayon temples were built by Kings for themselves, so
+                            that their subjects could workship them long after they are gone.
+                        </div>
+                    </div>
+                    <div class="painting">
+                        <div class="painting-image"><a href="#10"
+                                onclick="javascript:modalStuff('images/humming-bird.jpg','Hummingbird')"><img
+                                    src="images/humming-bird.jpg" /></a></div>
+                        <div class="painting-title">Hummingbird</div>
+                        <div class="painting-blurb">Its such a tiny little bird, but so much energy. I have tried to
+                            capture the different colors reflecting off its feathers.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
