@@ -1,0 +1,333 @@
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<style>
+    .clipbox {
+        border: solid black 1px;
+        margin: 30px;
+        padding: 10px;
+        width: 30%;
+    }
+
+    .clipbox-noborder {
+        margin-left: 10px;
+        padding: 10px;
+        width: 70%;
+    }
+
+    .clipbox-border {
+        margin-left: 2%;
+        border: solid black 1px;
+        padding: 2px;
+        width: 70%;
+    }
+
+    .pad-top {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-left: 2%;
+        width: 70%;
+    }
+
+    .margin-top {
+        margin-top: 20px;
+    }
+
+    h3 {
+        margin-top: 0;
+    }
+
+    .left {
+        width: 100%;
+        display: inline-block;
+    }
+
+    .references-section{
+        display: grid;
+        grid-template-columns: 30% 30% 40%;
+        padding-bottom: 30px;
+    }
+
+    .right {
+        width: 50%;
+        display: inline-block;
+    }
+
+    /* The Modal (background) */
+    .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 33%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+
+<script>
+    function listenedCheck(elementName) {
+        var x = document.getElementById(elementName);
+        x.value = 'Yes'
+    }
+
+    function validateForm() {
+        originalListenedCheck = document.getElementById('original_sound_listened_test').value;
+        firstListenedCheck = document.getElementById('first_sound_listened_test').value;
+        secondListenedCheck = document.getElementById('second_sound_listened_test').value;
+
+        
+        if (originalListenedCheck == 'Yes' && firstListenedCheck == 'Yes' && secondListenedCheck == 'Yes') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+<crowd-form>
+    <crowd-instructions link-text="View instructions" link-type="button">
+        <short-summary>
+            <p>Note: Please ‘accept’ this HIT only if you have access to a laptop or desktop with internal or external
+                speakers or headphones and if you are using Chrome or Firefox browser. This HIT involves listening and
+                evaluating audio clips.</p>
+            <h3>Project Details:</h3>
+            <p>-TBD-</p>
+
+            <h3>Consent:</h3>
+            <p>Before working on this HIT, please read the consent details on the 'View Consent Details' section of the
+                HIT page.
+                By accepting this HIT on Mechanical Turk, you will be indicating your consent to
+                participating in our study
+                as per the details outlined the consent details section.
+            </p>
+
+            <br />
+            <h3>Task Instructions:</h3>
+            <p>-TBD-</p>
+            <br />
+            <h3>For any questions:</h3>
+            <p>Please use the ‘Contact this requester’ link on the HIT details if you need further details or
+                clarifications on the task. The Principal Investigator (the person in charge of this research) or
+                his/her
+                representative will describe this research to you and answer all of your questions. <br />
+                Note: On using this
+                feature, your e-mail address and your name will automatically be visible to our research team so that we
+                can reply to you.
+            </p>
+        </short-summary>
+
+        <detailed-instructions>
+            <p>Please see summary tab for all instructions.</p>
+        </detailed-instructions>
+
+
+    </crowd-instructions>
+
+    <crowd-modal link-text="View Consent Details" link-type="button">
+        <div id="container" class="container">
+            <div>
+                <table>
+
+                    <tr>
+                        <td style="padding-left: 1%;width:10%"><img src='https://animatedsound.com/amt/ui/NUS_logo_full-vertical.jpg' width="75%"></td>
+                        <td>
+                            <h3>Welcome to the qualitative evaluation of
+                                artificially synthesized audio clips using deep neural networks&nbsp;&nbsp;</h3>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+
+                <p><span style="font-family:Tahoma,Geneva,sans-serif;">Thank you for your interest in this audio
+                        evaluation
+                        task on Mechanical Turk. This page outlines the details with respect to your consent to
+                        participate in our study.</span></p>
+                <p><br>
+                    <span style="font-family:Tahoma,Geneva,sans-serif;"><u><strong>Your personal data:</strong></u><br>
+                        Only the principal investigator and his/her representative has your worker ID and this will not
+                        be
+                        released to any other person. We will <u><strong>NOT</strong></u> request Amazon Mechanical Turk
+                        for
+                        your person identifying details. Also, this worker ID data will not be used in a publication or
+                        presentation. We will use this worker ID only for the purposes of correlating consent to HIT
+                        responses and distributing compensation via Mechanical Turk.<o:p></o:p></span>
+                </p>
+
+                <p><span style="font-family:Tahoma,Geneva,sans-serif;">All data collected will be kept in accordance to
+                        the
+                        National University of Singapore’s Research Data Management Policy. Research data used in any
+                        publication will be kept for a minimum of 10 years before being discarded.<o:p></o:p></span></p>
+            </div>
+
+            <div><br>
+                <span style="font-family:Tahoma,Geneva,sans-serif;">By accepting the HIT on Amazon's Mechanical Turk,
+                    you
+                    acknowledge that - </span>
+            </div>
+
+            <ol>
+                <li><span style="font-family:Tahoma,Geneva,sans-serif;">You have agreed to take part in
+                        this&nbsp;research.</span></li>
+                <li><span style="font-family:Tahoma,Geneva,sans-serif;">You have read the instructions on the mechanical
+                        turk website and details on this form which explains the use of the data you submit for this
+                        research.</span></li>
+                <li><span style="font-family:Tahoma,Geneva,sans-serif;">You can withdraw from this research at any point
+                        of
+                        time. If you want the data you already submitted to be deleted you will&nbsp;inform the
+                        Principal
+                        Investigator and all your data will be discarded.</span></li>
+                <li><span style="font-family:Tahoma,Geneva,sans-serif;">You will not have any financial benefits that
+                        result
+                        from the commercial development of this research.</span></li>
+                <li><span style="font-family:Tahoma,Geneva,sans-serif;">You agree to be re-contacted for future related
+                        studies via&nbsp;Amazon's Mechanical Turk website. You understand that future studies will be
+                        subject to an Institutional Review Board's approval.&nbsp;<span lang="EN-US">
+                            <o:p></o:p>
+                        </span></span></li>
+            </ol>
+
+            <div>&nbsp;</div>
+
+
+        </div>
+    </crowd-modal>
+    <div id="errorModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Please listen to all sound clips <b>fully</b> before submitting the task.</p>
+        </div>
+
+    </div>
+    <div class="container">
+        <input type="hidden" value="No" name="original_sound_listened_test" id="original_sound_listened_test" />
+        <input type="hidden" value="No" name="first_sound_listened_test" id="first_sound_listened_test" />
+        <input type="hidden" value="No" name="second_sound_listened_test" id="second_sound_listened_test" />
+
+        <input type="hidden" value="${pitch_under_test}" name="pitch_under_test" id="pitch_under_test" /><!-- midi -->
+        <input type="hidden" value="${type_under_test}" name="type_under_test" id="type_under_test" />
+        <!-- nsynth or pop -->
+        <input type="hidden" value="${first_clip_type}" name="first_clip_type" id="first_clip_type" />
+        <!-- 'Hop 128 - IF' or 'Hop 64 - IF' etc-->
+        <input type="hidden" value="${second_clip_type}" name="second_clip_type" id="second_clip_type" />
+        <!-- 'Hop 128 - IF' or 'Hop 64 - IF' etc-->
+
+        <div class="clipbox-border margin-top">
+            <p style="padding-left: 10px;"> Please read the instructions by clicking on 'View Instructions' and details
+                regarding your consent by clicking on 'View Consent Details'. <br />By accepting this HIT, you agree to
+                the terms of this study outlined
+                in the 'View Consent Details' section</p>
+        </div>
+        <div class="clipbox-noborder">
+            <p style="padding-left: 10px;"><b><u>Audio interpolation test</u></b></p>
+        
+            <p style="padding-left: 10px;"> This page outlines 4 audio clips. There are 2 reference 'end points' audio clips in <span style="color: blue;"><b>blue</b></span>. 
+                There are 2 other clips which are longer than the references and combine them by synthetically or programatically interpolating in between them.
+                
+            </p>
+            
+            <p style="padding-left: 10px;">Please select which <u><b>interpolation</b></u> sounds more <u><b>perceptually continuous</b></u>.</p>
+
+
+        </div>
+        <div class="clipbox-noborder">
+            <div class="references-section">
+                <div>
+                    <p style="padding-left: 10px;color: blue;"> <b>Reference clip 1</b>: </p>
+                    <audio controls="" onended="listenedCheck('original_sound_listened_test')">
+                        <source src="${audio_url_ground_truth}" type="audio/wav" />
+                    </audio>
+                </div>
+                <div>
+                    <p style="padding-left: 10px;color: blue;"> <b>Reference clip 2</b>: </p>
+                    <audio controls="" onended="listenedCheck('original_sound_listened_test')">
+                        <source src="${audio_url_ground_truth}" type="audio/wav" />
+                    </audio>
+                </div>
+              </div>
+            
+            <div class="left">
+                <p style="padding-left: 10px;"> Interpolated clip 1: <i>(PK comment - Interpolation without remapping)</i></p>
+                <audio controls="" onended="listenedCheck('first_sound_listened_test')">
+                    <source src="${audio_url_1}" type="audio/wav" />
+                </audio>
+            </div>
+            <div class="right">
+            </div>
+            <div class="left">
+                <p style="padding-left: 10px;"> Interpolated clip 2: <i>(PK comment - Interpolation with remapping)</i></p>
+                <audio controls="" onended="listenedCheck('second_sound_listened_test')">
+                    <source src="${audio_url_2}" type="audio/wav" />
+                </audio>
+            </div>
+            <div class="right">
+            </div>
+        </div>
+
+        <div class="pad-top">
+            <crowd-radio-group>
+                <input type="radio" name="better_clip" id="first_clip_better" value="first_clip_better"><label
+                    for="first_clip_better">Clip 1 serves as a better interpolation between the <span style="color: blue;"><b>references</b></span> than clip 2</label><br /><br />
+                <input type="radio" name="better_clip" id="second_clip_better" value="second_clip_better"><label
+                    for="second_clip_better">Clip 2 serves as a better interpolation between the <span style="color: blue;"><b>references</b></span> than clip 1</label><br /><br />
+                <input type="radio" name="better_clip" id="both_similar" value="both_similar"><label
+                    for="both_similar">Cannot compare or No noticeable difference between the two
+                    clips</label>
+            </crowd-radio-group>
+        </div>
+
+        <p style="padding-left: 10px;"><i>Listen to all sound clips fully on this page before submitting your
+                response.</i></p>
+</crowd-form>
+</div>
+
+</div>
+
+</crowd-form>
+<script>
+    var modal = document.getElementById("errorModal");
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+    document.querySelector('crowd-form').onsubmit = function (e) {
+        if (!validateForm()) {
+            e.preventDefault();
+            modal.style.display = "block";
+        }
+    }
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
