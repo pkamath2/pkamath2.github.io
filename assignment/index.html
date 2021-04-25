@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <title>Pitch estimation for monophonic acoustic guitar notes using gated recurrent neural networks</title>
+
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            /* font-family: 'Montserrat', Arial, Helvetica, sans-serif; */
+        }
+
+        .written-content {
+            line-height: 2;
+            text-indent: 50px;
+        }
+
+        .pipe-content {
+            border-right: solid lightgray 2px;
+        }
+
+        .bg-topbar {
+            background-color: hsla(0, 100%, 70%, 0.3);
+            ;
+        }
+
+        .sub-headings {
+            /* text-decoration: underline #0D6EFD; */
+            font-weight: bold;
+        }
+
+        .example-headings {
+            font-weight: bold;
+        }
+
+        .table-center-align {
+            text-align: center;
+        }
+
+        .dashed-boder {
+            border-bottom: solid lightgray 2px;
+            border-style: dashed;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+
+        .reduced-img-size {
+            width: 60%;
+        }
+
+        .label-large {
+            font-size: larger;
+            font-weight: 600;
+            /* text-decoration: underline; */
+        }
+    </style>
+
+    <script>
+        function scrollToTheTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-topbar">
+        <div class="container-fluid">
+            <div class="navbar-brand" style='padding-left: 7%;'>&nbsp;</div>
+        </div>
+    </nav>
+    <div class='container-fluid'>
+        <div class='row'>&nbsp;</div>
+        <div class='row'>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+            <div class='col-7 table-center-align'>
+                <h2><b>Pitch estimation for monophonic acoustic guitar notes using gated recurrent neural networks</b>
+                </h2>
+            </div>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+        </div>
+        <div class='row'>&nbsp;</div>
+        <div class='row'>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+            <div class='col-7'>
+                This is a companion webpage for above titled paper.
+                The code for this project is on Github and can be found <a
+                    href="https://github.com/pkamath2/nsynth-pitch-estimation">here</a>
+            </div>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+        </div>
+        <div class='row'>&nbsp;</div>
+        <div class='row'>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+            <div class='col-7'>
+                <h5><b>Examples</b></h5>
+                Below are 4 pitches from the NSynth validation set with annotated MIDI numbers 24 (f0 = 32.7Hz), 34 (f0
+                = 58.27Hz),
+                53 (f0 = 174.61Hz), and 75 (f0 = 622.25Hz). Each example is 4 seconds in length and is sampled at
+                16kHz.<br /><br />
+
+                A 2048 sample is extracted every 128ms and pitch is estimated using Pitch GRU (our algorithm), pYIN and
+                CREPE. Additionally, PyTorch audio's (torchaudio)
+                internal implementation is also used to estimate pitch for comparison.<br /><br />
+
+                For lower pitches (below 40) Pitch GRU gives more stable estimates than pYIN and CREPE. Pitched higher
+                than MIDI 40 Pitch GRU, pYIN and CREPE have approximately similar accuracies. Also, towards
+                the end of the signal (around 3 second mark in each example) all algorithms estimate incorrectly, except
+                pYIN which eventually corrects its estimates.
+
+            </div>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+        </div>
+        <div class='row'>&nbsp;</div>
+        <div class='row'>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+            <div class='col-7 table-center-align'>
+                <h6><b>MIDI 24 (f0 = 32.7Hz)</b></h6>
+            </div>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+            <div class='col-7 table-center-align'>
+                <img src="images/animation-24.gif" width="60%">
+            </div>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+        </div>
+        <div class='row'>&nbsp;</div>
+        <div class='row'>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+            <div class='col-7 table-center-align'>
+                <h6><b>MIDI 34 (f0 = 58.27Hz)</b></h6>
+            </div>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+            <div class='col-7 table-center-align'>
+                <img src="images/animation-34.gif" width="60%">
+            </div>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+        </div>
+        <div class='row'>&nbsp;</div>
+        <div class='row'>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+            <div class='col-7 table-center-align'>
+                <h6><b>MIDI 53 (f0 = 174.61Hz)</b></h6>
+            </div>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+            <div class='col-7 table-center-align'>
+                <img src="images/animation-53.gif" width="60%">
+            </div>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+        </div>
+        <div class='row'>&nbsp;</div>
+        <div class='row'>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+            <div class='col-7 table-center-align'>
+                <h6><b>MIDI 75 (f0 = 622.25Hz)</b></h6>
+            </div>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+            <div class='col-7 table-center-align'>
+                <img src="images/animation-75.gif" width="60%">
+            </div>
+            <div class='col-2'>
+                &nbsp;
+            </div>
+        </div>
+
+        <div class='row'>&nbsp;</div>
+        <div class='row'>&nbsp;</div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
