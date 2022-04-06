@@ -1,0 +1,302 @@
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <title>Animated Sound: Audio Samples</title>
+  <style>
+    body {
+      font-family: "Open Sans";
+    }
+
+    audio {
+      width: 100%;
+    }
+
+    .heading-overview {
+      font-weight: bolder;
+      font-size: 250%;
+      text-align: center;
+    }
+  </style>
+  <script>
+    let ind = 0;
+    let sounds = [];
+    function playseq(prefix) {
+      ind = 0;
+      let i = 0;
+      while (i <= 5) {
+        sounds[i] = (document.getElementById(prefix + i))
+        i++;
+      }
+
+      console.log(sounds)
+
+      playSequence();
+
+    }
+
+    function playSequence() {
+      sounds[ind].addEventListener(
+        "ended",
+        playSequence
+      );
+      if (ind != 0)
+        sounds[ind - 1].removeEventListener(
+          "ended",
+          playSequence
+        );
+      sounds[ind].play();
+      ind++;
+    }
+  </script>
+</head>
+
+
+
+<body>
+
+  <div class="container-fluid" style="width: 100%">
+    <div class="heading-overview">Audio Samples for Perceptual Evaluation</div>
+
+    <div class="row">&nbsp;</div>
+    <div class="row">&nbsp;</div>
+
+    <div class="row">
+      <div class="col-2">
+        &nbsp;
+      </div>
+      <div class="col-10 h4">
+        <strong>Audio interpolated from GAN</strong>
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+      <div class="col-2">
+        &nbsp;
+      </div>
+      <div class="col-1 text-center pt-2">
+        <b>Texture Sample</b>
+      </div>
+      <div class="col-2">
+        <audio controls controlsList="nodownload noplaybackrate" preload="auto">
+          <source
+            src="https://animatedsound-listening-test.s3.us-east-2.amazonaws.com/audio_samples/textures/exp1/oreillyunscgridunscrowunsconsv.wav"
+            type="audio/wav" />
+        </audio>
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+      <div class="col-2">
+        &nbsp;
+      </div>
+      <div class="col-1 text-center pt-2">
+        <b>Pitched Sample</b>
+      </div>
+      <div class="col-2">
+        <audio controls controlsList="nodownload noplaybackrate" preload="auto">
+          <source
+            src="https://animatedsound-listening-test.s3.us-east-2.amazonaws.com/audio_samples/pitched/exp1/nsynthunsctrumpinetunscpinnededgesunscrowunsctw.wav"
+            type="audio/wav" />
+        </audio>
+      </div>
+    </div>
+
+
+
+
+    <div class="row">&nbsp;</div>
+    <div class="row">
+      <div class="col-2">
+        &nbsp;
+      </div>
+      <div class="col-8">
+        <hr />
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+
+
+
+
+    <div class="row">
+      <div class="col-2">
+        &nbsp;
+      </div>
+      <div class="col-10 h4">
+        <strong>Audio synthesized using control parameter (increasing order)</strong>
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+
+    <div class="row">
+      <div class="col-2">
+        &nbsp;
+      </div>
+      <div class="col-1 text-center pt-2">
+        <b>Texture Sample</b>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-2">
+        &nbsp;
+      </div>
+      <div class="col-8">
+        <div class="row">
+          <div class="col-2">
+            <audio id="audio_0_0" controls controlsList="nodownload noplaybackrate" preload="auto">
+              <source src="https://animatedsound.com/icml2022/datasets/waterfill/waterfill--fill-0--v-09.wav"
+                type="audio/wav" />
+            </audio>
+          </div>
+          <div class="col-2">
+            <audio id="audio_0_1" controls controlsList="nodownload noplaybackrate" preload="auto">
+              <source src="https://animatedsound.com/icml2022/datasets/waterfill/waterfill--fill-2--v-09.wav"
+                type="audio/wav" />
+            </audio>
+          </div>
+          <div class="col-2">
+            <audio id="audio_0_2" controls controlsList="nodownload noplaybackrate" preload="auto">
+              <source src="https://animatedsound.com/icml2022/datasets/waterfill/waterfill--fill-5--v-09.wav"
+                type="audio/wav" />
+            </audio>
+          </div>
+          <div class="col-2">
+            <audio id="audio_0_3" controls controlsList="nodownload noplaybackrate" preload="auto">
+              <source src="https://animatedsound.com/icml2022/datasets/waterfill/waterfill--fill-7--v-09.wav"
+                type="audio/wav" />
+            </audio>
+          </div>
+          <div class="col-2">
+            <audio id="audio_0_4" controls controlsList="nodownload noplaybackrate" preload="auto">
+              <source src="https://animatedsound.com/icml2022/datasets/waterfill/waterfill--fill-9--v-09.wav"
+                type="audio/wav" />
+            </audio>
+          </div>
+          <div class="col-2">
+            <audio id="audio_0_5" controls controlsList="nodownload noplaybackrate" preload="auto">
+              <source src="https://animatedsound.com/icml2022/datasets/waterfill/waterfill--fill-10--v-09.wav"
+                type="audio/wav" />
+            </audio>
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        &nbsp;
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+      <div class="col-2">
+        &nbsp;
+      </div>
+      <div class="col-8">
+        <div class="row">
+          <div class="col-4 ">
+            <button class="p-3" onclick="playseq('audio_0_')">Click to play sequence</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        &nbsp;
+      </div>
+    </div>
+
+
+
+
+
+
+    <div class="row">&nbsp;</div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+      <div class="col-2">
+        &nbsp;
+      </div>
+      <div class="col-1 text-center pt-2">
+        <b>Pitched Sample</b>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-2">
+        &nbsp;
+      </div>
+      <div class="col-8">
+        <div class="row">
+          <div class="col-2">
+            <audio id="audio_1_0" controls controlsList="nodownload noplaybackrate" preload="auto">
+              <source src="https://animatedsound-listening-test.s3.us-east-2.amazonaws.com/audio_samples/pitched/exp2/BasicFM_ParamMapper--cf_exp-00.00--v-09.wav"
+                type="audio/wav" />
+            </audio>
+          </div>
+          <div class="col-2">
+            <audio id="audio_1_1" controls controlsList="nodownload noplaybackrate" preload="auto">
+              <source src="https://animatedsound-listening-test.s3.us-east-2.amazonaws.com/audio_samples/pitched/exp2/BasicFM_ParamMapper--cf_exp-00.20--v-09.wav"
+                type="audio/wav" />
+            </audio>
+          </div>
+          <div class="col-2">
+            <audio id="audio_1_2" controls controlsList="nodownload noplaybackrate" preload="auto">
+              <source src="https://animatedsound-listening-test.s3.us-east-2.amazonaws.com/audio_samples/pitched/exp2/BasicFM_ParamMapper--cf_exp-00.60--v-09.wav"
+                type="audio/wav" />
+            </audio>
+          </div>
+          <div class="col-2">
+            <audio id="audio_1_3" controls controlsList="nodownload noplaybackrate" preload="auto">
+              <source src="https://animatedsound-listening-test.s3.us-east-2.amazonaws.com/audio_samples/pitched/exp2/BasicFM_ParamMapper--cf_exp-00.70--v-09.wav"
+                type="audio/wav" />
+            </audio>
+          </div>
+          <div class="col-2">
+            <audio id="audio_1_4" controls controlsList="nodownload noplaybackrate" preload="auto">
+              <source src="https://animatedsound-listening-test.s3.us-east-2.amazonaws.com/audio_samples/pitched/exp2/BasicFM_ParamMapper--cf_exp-00.90--v-09.wav"
+                type="audio/wav" />
+            </audio>
+          </div>
+          <div class="col-2">
+            <audio id="audio_1_5" controls controlsList="nodownload noplaybackrate" preload="auto">
+              <source src="https://animatedsound-listening-test.s3.us-east-2.amazonaws.com/audio_samples/pitched/exp2/BasicFM_ParamMapper--cf_exp-01.00--v-09.wav"
+                type="audio/wav" />
+            </audio>
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        &nbsp;
+      </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+      <div class="col-2">
+        &nbsp;
+      </div>
+      <div class="col-8">
+        <div class="row">
+          <div class="col-4 ">
+            <button class="p-3" onclick="playseq('audio_1_')">Click to play sequence</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        &nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+</body>
+
+</html>
